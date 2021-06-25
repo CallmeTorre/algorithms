@@ -18,16 +18,17 @@ Example 3:
 	Input: nums = [3,3], target = 6
 	Output: [0,1]
 */
+package main
 
 func twoSum(nums []int, target int) []int {
-    hashMap := make(map[int]int)
-    for index, value := range nums {
-        expected_value := target - value
-        _, found := hashMap[expected_value]
-        if found && hashMap[expected_value] != index{
-            return []int{index, hashMap[expected_value]}
-        }
-        hashMap[value] = index 
-    }
-    return []int{}
+	hashMap := make(map[int]int)
+	for index, value := range nums {
+		expected_value := target - value
+		_, found := hashMap[expected_value]
+		if found && hashMap[expected_value] != index {
+			return []int{index, hashMap[expected_value]}
+		}
+		hashMap[value] = index
+	}
+	return []int{}
 }

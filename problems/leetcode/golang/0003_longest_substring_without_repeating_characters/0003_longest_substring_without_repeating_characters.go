@@ -33,27 +33,28 @@ Example 4:
 "dvdf"
 "qrsvbspk"
 */
+package main
 
 func lengthOfLongestSubstring(s string) int {
-    longest := 0
-    memory := make(map[byte]int)
-    windowFrom, windowTo := 0, 0
-    for windowTo < len(s){
-        currentChar := s[windowTo]
-        if _, found := memory[currentChar]; found{
-            if len(memory) > longest{
-                longest = len(memory)
-            }
-            for windowFrom <= memory[currentChar]{
-                delete(memory, s[windowFrom])
-                 windowFrom++
-            }
-        }
-        memory[currentChar] = windowTo
-        windowTo++ 
-    }
-    if len(memory) > longest{
-        longest = len(memory)
-    }
-    return longest
+	longest := 0
+	memory := make(map[byte]int)
+	windowFrom, windowTo := 0, 0
+	for windowTo < len(s) {
+		currentChar := s[windowTo]
+		if _, found := memory[currentChar]; found {
+			if len(memory) > longest {
+				longest = len(memory)
+			}
+			for windowFrom <= memory[currentChar] {
+				delete(memory, s[windowFrom])
+				windowFrom++
+			}
+		}
+		memory[currentChar] = windowTo
+		windowTo++
+	}
+	if len(memory) > longest {
+		longest = len(memory)
+	}
+	return longest
 }

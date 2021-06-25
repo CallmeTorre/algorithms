@@ -23,32 +23,20 @@ Example 4:
 
 package main
 
-import (
-	"math"
-	"strconv"
-)
-
 func reverse(x int) int {
-	if x == 0 && x > math.MaxInt32 {
-		return 0
-	}
+	const MaxInt = 1<<31 - 1
+	const MinInt = -1 << 31
 	var result int
-	stringNumber := strconv.Itoa(x)
-	value := make([]byte, len(stringNumber))
-
-	for i, j := 0, len(stringNumber)-1; i <= j; i, j = i+1, j-1 {
-		value[i], value[j] = stringNumber[j], stringNumber[i]
-	}
-
-	if x < 0 {
-		result, _ = strconv.Atoi(string(value[:len(value)-1]))
-		result *= -1
-	} else {
-		result, _ = strconv.Atoi(string(value[:len(value)]))
-	}
-	if result >= math.MaxInt32 || result <= math.MinInt32 {
+	if x == 0 {
 		return 0
-	} else {
-		return result
 	}
+	for x != 0 {
+		digit := x % 10
+		result = result*10 + digit
+		x = x / 10
+	}
+	if result <= MinInt || result >= MaxInt {
+		return 0
+	}
+	return result
 }

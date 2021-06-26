@@ -30,6 +30,9 @@ import (
 )
 
 func isPalindrome(x int) bool {
+	if x < 0 {
+		return false
+	}
 	s := strconv.Itoa(x)
 	start, end := 0, len(s)-1
 	for start <= end {

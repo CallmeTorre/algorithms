@@ -158,7 +158,7 @@ func min(x, y int) int {
 func countDepthIncreasesByThree(values []int) int {
 	result := 0
 	previous_measure := sum(values[0:3])
-	for i := 0; i < len(values); i++ {
+	for i := 1; i < len(values); i++ {
 		current_values := values[i:min(i+3, len(values))]
 		if len(current_values) == 3 {
 			current_measure := sum(current_values)

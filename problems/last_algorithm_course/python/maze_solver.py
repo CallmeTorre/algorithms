@@ -13,19 +13,16 @@ def walk(maze, current_x, current_y, end_x, end_y, path):
     # Off the map
     if current_x < 0 or current_x >= len(maze[0]) or current_y < 0 or current_y >= len(maze):
         return False
-    # # is a wall
+    # # is a wall and visited
     if maze[current_y][current_x] == "#":
         return False
     # It's the end
     if current_y == end_y and current_x == end_x:
         path.append((current_x, current_y))
         return True
-    # Visited
-    if maze[current_y][current_x] == "X":
-        return False
     
     # Pre
-    maze[current_y][current_x] = "X"
+    maze[current_y][current_x] = "#"
     path.append((current_x, current_y))
 
     # Recurse
